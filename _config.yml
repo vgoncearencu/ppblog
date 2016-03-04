@@ -7,7 +7,7 @@ title: Blog of PPMessage
 subtitle: Open Source Plug & Play Online Customer Service System
 description:
 author: Guijin Ding
-language:
+language: en-US
 timezone:
 
 # URL
@@ -37,6 +37,7 @@ render_drafts: false
 post_asset_folder: false
 relative_link: false
 future: true
+
 highlight:
   enable: true
   line_number: true
@@ -69,6 +70,7 @@ theme: maupassant
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: https://github.com/PPMESSAGE/ppmessage.github.io.git
+  #repository: https://github.com/PPMESSAGE/ppmessage.github.io.git
+  repository: git@github.com:PPMESSAGE/ppmessage.github.io.git
   brach: master
 

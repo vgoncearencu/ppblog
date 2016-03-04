@@ -1,6 +1,7 @@
 title: Run PPMessage on Mac OS X
 date: 2016-03-04 15:47:19
 tags:
+description: Run PPMessage on developer's Mac OS X.
 ---
 
 >PPMessage is `An Open Source Plug & Play Online Customer Service Platform`. Base on PPMessage, you can chat with your customer via Web and mobile real time. 

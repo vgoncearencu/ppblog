@@ -150,9 +150,10 @@ description: Deploy PPMessage on Linux
 ***
 
 ### 快速部署脚本
-将整个部署流程合并为一个脚本：
+将整个部署流程合并为一个脚本(适用于Debian)：
+  
     
-    #! /bin/bash
+    #!/bin/bash
     
     # version: 0.1
     # maintainer: Jin He <jin.he@ppmessage.com>
@@ -162,17 +163,15 @@ description: Deploy PPMessage on Linux
     FFMPEG_VERSION=2.8.5
     MYSQL_CONNECTOR_PYTHON_VERSION=2.1.3
 
-    cp /etc/apt/sources.list /etc/apt/sources.list.backup
+    sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup
 
-    echo \
-    deb http://mirrors.163.com/debian/ jessie main non-free contrib \\n\
-    deb http://mirrors.163.com/debian/ jessie-updates main non-free contrib \\n\
-    deb http://mirrors.163.com/debian/ jessie-backports main non-free contrib \\n\
-    deb http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib \\n\
-    > /etc/apt/sources.list
-
+    sudo bash -c echo "deb http://mirrors.163.com/debian/ jessie main non-free contrib > /etc/apt/sources.list"
+    sudo bash -c echo "deb http://mirrors.163.com/debian/ jessie-updates main non-free contrib >> /etc/apt/sources.list"
+    sudo bash -c echo "deb http://mirrors.163.com/debian/ jessie-backports main non-free contrib >> /etc/apt/sources.list"
+    sudo bash -c echo "deb http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib >> /etc/apt/sources.list"
+    
     sudo apt-get update
-
+    
     sudo apt-get install -y \
         apt-file \
         apt-utils \
@@ -188,7 +187,7 @@ description: Deploy PPMessage on Linux
         libffi-dev \
         libfdk-aac-dev \
         libfreetype6-dev \
-        libjpeg62-turbo-dev  # relace libjpeg62-turbo-dev with libjpeg8-dev in Ubuntu \
+        libjpeg62-turbo-dev \ 
         libmagic1 \
         libmp3lame-dev \
         libncurses5-dev \

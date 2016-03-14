@@ -43,6 +43,8 @@ tags:
     *可用以下命令安装 green*
         
         sudo pip install green --ignore-installed six
+        
+    *安装其他模块也可能出现类似错误，在这种情况下，只需要使用 '--ignore-installed xxx' 即可*
    
 4. 下载、编译、安装其他依赖
 

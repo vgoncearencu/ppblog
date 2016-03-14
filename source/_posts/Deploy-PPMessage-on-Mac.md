@@ -1,6 +1,7 @@
 title: Deploy PPMessage on Mac
 date: 2016-03-08 10:08:55
 tags:
+description: Deploy PPMessage on Mac
 ---
 ### 前言
 > 部署 PPMessage 对 Mac OS X 系统版本并无要求，建议使用最新版本。
@@ -149,7 +150,7 @@ tags:
     wget http://cdn.mysql.com//Downloads/Connector-Python/mysql-connector-python-$MYSQL_CONNECTOR_PYTHON_VERSION.tar.gz
     tar -xzvf mysql-connector-python-$MYSQL_CONNECTOR_PYTHON_VERSION.tar.gz
     cd mysql-connector-python-$MYSQL_CONNECTOR_PYTHON_VERSION
-    sudo python setup.py install
+    sudo python setup.py install        
 
     cd /tmp
     git clone --recursive https://github.com/maxmind/libmaxminddb
@@ -159,3 +160,6 @@ tags:
     make && sudo make install
 
     echo "Finish deployment successfully, have fun with PPMessage"
+
+***
+### Have fun with PPMessage !

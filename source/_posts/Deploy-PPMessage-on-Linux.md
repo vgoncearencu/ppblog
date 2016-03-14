@@ -23,96 +23,28 @@ description: Deploy PPMessage on Linux
     
     然后执行
         
-        apt-get update
+        sudo apt-get update
         
 2. apt-get 安装依赖
 
    所有需要安装的依赖润软件如下 (在Ubuntu下需要把 libjpeg62-turbo-dev 替换为 libjpeg8-dev)：
         
-       apt-file
-       apt-utils
-       autoconf
-       automake
-       gcc
-       git
-       g++ 
-       libblas-dev
-       liblapack-dev
-       libatlas-base-dev
-       gfortran
-       libffi-dev
-       libfdk-aac-dev
-       libfreetype6-dev
-       # libjpeg8-dev
-       libjpeg62-turbo-dev
-       libmagic1
-       libmp3lame-dev
-       libncurses5-dev
-       libopencore-amrwb-dev
-       libopencore-amrnb-dev
-       libopus-dev
-       libpng12-dev
-       libpcre3-dev
-       libssl-dev
-       libtool
-       mercurial
-       mysql-server
-       openssl
-       pkg-config
-       python
-       python-dev
-       python-pip
-       redis-server
-       wget
+       sudo apt-get install -y apt-file apt-utils autoconf automake gcc git g++ libblas-dev liblapack-dev libatlas-base-dev gfortran libffi-dev libfdk-aac-dev libfreetype6-dev libjpeg62-turbo-dev libmagic1 libmp3lame-dev libncurses5-dev libopencore-amrwb-dev libopencore-amrnb-dev libopus-dev libpng12-dev libpcre3-dev libssl-dev libtool mercurial mysql-server openssl pkg-config python python-dev python-pip redis-server wget
 
 3. pip 安装 Python 模块
+
+    安装命令：
+       
+        sudo pip install -i http://pypi.douban.com/simple axmlparserpy beautifulsoup4 biplist evernote filemagic geoip2 green git+https://github.com/senko/python-video-converter.git hg+https://dingguijin@bitbucket.org/dingguijin/apns-client identicon ipython jieba paramiko paho-mqtt pillow ppmessage-mqtt pyipa pypinyin pyparsing python-dateutil python-gcm python-magic qiniu qrcode readline redis rq supervisor sqlalchemy tornado xlrd numpy matplotlib scipy scikit-learn
     
     *说明1：类似 `git+https://github.com/senko/python-video-converter.git` 模块的安装方法与普通 pip 安装方法无异。例如：*
        
-       pip install git+https://github.com/senko/python-video-converter.git
+        sudo pip install git+https://github.com/senko/python-video-converter.git
        
     *说明2：可以通过国内 pip 源进行安装，下载速度更快。例如使用豆瓣源安装 axmlparsepy。*
    
-       pip install -i http://pypi.douban.com/simple axmlparsepy
+        sudo pip install -i http://pypi.douban.com/simple axmlparsepy
    
-    所有需要安装的模块如下：
-       
-        axmlparserpy
-        beautifulsoup4
-        biplist
-        evernote
-        filemagic
-        geoip2
-        green
-        git+https://github.com/senko/python-video-converter.git
-        hg+https://dingguijin@bitbucket.org/dingguijin/apns-client
-        identicon
-        ipython
-        jieba
-        paramiko
-        paho-mqtt
-        pillow
-        ppmessage-mqtt
-        pyipa
-        pypinyin
-        pyparsing
-        python-dateutil
-        python-gcm
-        python-magic
-        qiniu
-        qrcode
-        readline
-        redis
-        rq
-        supervisor
-        sqlalchemy
-        tornado
-        xlrd
-        numpy
-        matplotlib
-        scipy
-        scikit-learn
-
 4.  手动下载、编译、安装其他依赖
     
     其他依赖包括 mysql-connector-python, ffmpeg, nginx, libmaxminddb
@@ -121,7 +53,7 @@ description: Deploy PPMessage on Linux
             wget http://cdn.mysql.com//Downloads/Connector-Python/mysql-connector-python-2.1.3.tar.gz
             tar -xzvf mysql-connector-python-2.1.3.tar.gz
             cd mysql-connector-python-2.1.3
-            python setup.py install
+            sudo python setup.py install
  
     2. 安装 ffmpeg
         
@@ -129,7 +61,7 @@ description: Deploy PPMessage on Linux
             tar -xjvf ffmpeg-2.8.5.tar.bz2
             cd ffmpeg-2.8.5
             ./configure --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-version3 --enable-nonfree --disable-yasm --enable-libmp3lame --enable-libopus --enable-libfdk-aac
-            make && make install
+            make && sudo make install
             
     3. 安装 nginx
     
@@ -139,18 +71,18 @@ description: Deploy PPMessage on Linux
             tar -xzvf nginx-1.8.0.tar.gz
             cd nginx-1.8.0 
             ./configure --with-http_ssl_module --add-module=../nginx-upload-module 
-            make && make install
+            make && sudo make install
     4. 安装 libmaxminddb
         
             git clone --recursive https://github.com/maxmind/libmaxminddb
             cd libmaxminddb
             ./bootstrap
             ./configure
-            make && make install
+            make && sudo make install
 ***
 
 ### 快速部署脚本
-将整个部署流程合并为一个脚本(适用于Debian)：
+将整个部署流程合并为一个脚本：
   
     
     #!/bin/bash
@@ -250,7 +182,7 @@ description: Deploy PPMessage on Linux
     wget http://cdn.mysql.com//Downloads/Connector-Python/mysql-connector-python-$MYSQL_CONNECTOR_PYTHON_VERSION.tar.gz
     tar -xzvf mysql-connector-python-$MYSQL_CONNECTOR_PYTHON_VERSION.tar.gz
     cd mysql-connector-python-$MYSQL_CONNECTOR_PYTHON_VERSION
-    python sudo setup.py install
+    sudo python setup.py install
     
     cd /tmp
     wget http://nginx.org/download/nginx-$NGINX_VERSION.tar.gz

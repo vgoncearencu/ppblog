@@ -71,7 +71,7 @@ if __name__ == "__main__":
 
 无图无真相，我蹩脚的英语，不足以表达对麦克同学的仰慕之情。
 
-![屏幕快照 2016-01-15 09.45.37.png](http://upload-images.jianshu.io/upload_images/1452741-eb098d4227c9742d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Mike 评论](/content/images/mike-comments.png)
 
 有共产主义战士相助，当然是无坚不摧了，事情也就结束了。今天为了抓上边的图，我特意看了一些麦克先生的这篇文章和评论，他在2006年12月就把文章写好，没有再改过，但直到今天还有人在问他各种白痴问题，他还在回答，我若不是为了吹牛，也已经把这个战士放到了一边。
 

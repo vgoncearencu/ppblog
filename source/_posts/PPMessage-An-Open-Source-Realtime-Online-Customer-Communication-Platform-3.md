@@ -1,7 +1,13 @@
 title: PPMessage - An Open Source Realtime Online Customer Communication Platform - (3)
 date: 2016-04-09 20:34:22
 tags:
+description: 做立水桥边最好的开源实时在线客户通讯平台之人工智能之路
 ---
+
+# 做立水桥边最好的开源实时在线客户通讯平台之人工智能之路
+
+> 本文主要是讲故事，代码是可以运行的。但是制作一个聊天机器人，真的需要很多技术，以后我会开帖专门讲 PPMessage 内如何利用深度学习的。
+
 ## 从一段代码开始
 
 > 这是我早上为了写这些文字，专门写的一段Python“软码”。运行这段代码之前，需要通过pip安装numpy、scipy、scikit-learn、jieba，最好是Mac电脑。当然看不懂也没关系，因为故事在后面。

@@ -2,6 +2,7 @@ title: Run VPN client on Aliyun
 date: 2016-03-04 18:50:07
 tags:
 description: 如果您正在使用阿里云服务器，你可能会无法安装node-sass之类的东西，本文将告诉您一种方法
+
 ---
 
 # 在阿里云上通过VPN翻墙安装软件
@@ -17,9 +18,11 @@ description: 如果您正在使用阿里云服务器，你可能会无法安装n
 
 ## 登录阿里云
 
+
 ```Bash
 ssh root@ppmessage.com
 ```
+
 一般会提示：
 Last login: Fri Mar  4 18:31:30 2016 from 123.116.51.166
 
@@ -34,6 +37,7 @@ route -n
 ```
 
 输出类似：
+
 ```Bash
 Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 0.0.0.0         123.57.143.247  0.0.0.0         UG    0      0        0 eth1

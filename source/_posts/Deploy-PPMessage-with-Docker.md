@@ -2,6 +2,7 @@ title: Deploy PPMessage with Docker
 date: 2016-03-04 20:07:21
 tags:
 description: deploy ppmessage with docker
+
 ---
 要想使用或者开发 PPMessage，首先必须搭建 PPMessage 开发环境。即使对于 PPMessage 团队的开发人员，从头开始搭建开发环境也是一件费时费力的事情。幸运的是，借助 Docker 的魔力，这些困难已经迎刃而解。
 

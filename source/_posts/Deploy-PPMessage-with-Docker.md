@@ -41,7 +41,7 @@ sudo usermod -aG docker $USER
 然后重新登录当前用户，在打开系统Terminal，就应该可以使用 Docker 命令了。
 
 #### 下载 PPMessage Docker镜像
-安装好 Docker 之后，下一步是下载 PPMessage Docker 镜像。镜像托管在[Docker Hub](https://hub.docker.com/r/ppmessage/ppmessage/)上，大小约为480MB。要下载它，打开 Terminal，输入命令：
+安装好 Docker 之后，下一步是下载 PPMessage Docker 镜像。镜像托管在[Docker Hub](https://hub.docker.com/r/ppmessage/ppmessage/)上。要下载它，打开 Terminal，输入命令：
 
 ```bash
 docker pull ppmessage/ppmessage
@@ -59,6 +59,41 @@ docker pull ppmessage/ppmessage
 cd ~/Documents
 git clone git@github.com:PPMESSAGE/ppmessage.git
 ```
+
+#### 安装Nodejs, Npm包
+下载PPMessage源码之后，我们还需要从源码中生成PPCom, PPKefu, PPConsole运行时需要的js, css文件。
+
+首先需要安装nodejs，在Mac上通过以下命令安装:
+
+```bash
+brew install nodejs
+```
+
+在Debian\Ubuntu上，通过以下命令安装nodejs 4.x
+
+```bash
+curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+安装完nodejs之后，下一步是安装cnpm, bower, gulp
+
+```bash
+sudo npm install -g bower
+sudo npm install -g gulp
+sudo npm install -g cnpm
+```
+
+最后，下载PPCom, PPKefu, PPConsole的bower 和 npm 依赖。
+
+```bash
+cd ~/Documents/ppmessage
+./dist.sh bower
+./dist.sh npm
+```
+在国内，从npm官方镜像源下载 npm 依赖速度比较慢，且会出现部分资源被墙的现象。此时可以用`./dist.sh cnpm`代替上面的`./dist.sh npm`, 这会从淘宝npm镜像源下载npm依赖。
+
+因为生成PPConsole、PPKefu、PPConsole的js, css文件必须在PPMessage首次启动之后完成，我们将会在用Docker启动PPMessage后再执行这一操作。
 
 #### 配置 PPMessage
 PPMessage 源码下载完成后，在启动 PPMessage之前，你需要先生成 PPMessage 的配置文件。要生成配置文件，执行以下命令：
@@ -161,7 +196,6 @@ BOOTSTRAP_CONFIG = {
         "sender_id": "your gcm sender id",
     },
 }
-
 ```
 
 #### 启动 PPMessage
@@ -184,16 +218,24 @@ docker run -it -p 8080:8080 -v ~/Documents/ppmessage:/ppmessage ppmessage/ppmess
 
 
 #### 访问 PPMessage
-在用 Docker 启动 PPMessage 之后，你可以访问PPMessage的各项服务，例如api, ppkefu, pphome。
+在用docker启动PPMessage之后，我们需要生成PPCom, PPKefu, PPConsole运行时所需要的js，css文件。执行
+
+```bash
+cd ~/Documents/ppmessage
+./dist.sh gulp
+```
+以后，当你更新PPMessage源码后，都要重复这一操作。
+
+然后，你可以访问PPMessage的各项服务，例如api, ppkefu, pphome。
 
 **在Linux 下**，Docker运行在本机上，你可以直接通过 `http://localhost:8080` 访问 PPMessage，例如：
 
-```
+```bash
 http://localhost:8080/ppkefu
 http://localhost:8080/pphome
 ```
 
-**在 Mac 和 Windows下**，Docker运行在虚拟机中，你需要先获取 Docker 虚拟机得 IP。打开 Docker Terminal，输入命令：
+**在 Mac 和 Windows下**，Docker运行在虚拟机中，你需要先获取 Docker 虚拟机的 IP。打开 Docker Terminal，输入命令：
 
 ```bash
 docker-machine ip default
